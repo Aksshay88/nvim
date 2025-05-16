@@ -127,6 +127,12 @@ _G.packer_plugins = {
     path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["crates.nvim"] = {
+    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vcrates\frequire\0" },
+    loaded = true,
+    path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/crates.nvim",
+    url = "https://github.com/saecki/crates.nvim"
+  },
   fd = {
     loaded = true,
     path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/fd",
@@ -259,6 +265,16 @@ _G.packer_plugins = {
     path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
+  ["nvim-nyctophilia"] = {
+    loaded = true,
+    path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/nvim-nyctophilia",
+    url = "https://github.com/javiorfo/nvim-nyctophilia"
+  },
+  ["nvim-soil"] = {
+    loaded = true,
+    path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/nvim-soil",
+    url = "https://github.com/javiorfo/nvim-soil"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -310,6 +326,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aksshay88/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
+  },
+  rustaceanvim = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/aksshay88/.local/share/nvim/site/pack/packer/opt/rustaceanvim",
+    url = "https://github.com/mrcjkb/rustaceanvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -413,21 +436,25 @@ time([[Defining packer_plugins]], false)
 time([[Config for alpha-nvim]], true)
 try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
 time([[Config for alpha-nvim]], false)
--- Config for: competitest.nvim
-time([[Config for competitest.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
-time([[Config for competitest.nvim]], false)
--- Config for: gen.nvim
-time([[Config for gen.nvim]], true)
-time([[Config for gen.nvim]], false)
 -- Config for: vim-dadbod
 time([[Config for vim-dadbod]], true)
 try_loadstring("\27LJ\2\n+\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\14dadbod_ui\6g\bvim\0", "config", "vim-dadbod")
 time([[Config for vim-dadbod]], false)
+-- Config for: gen.nvim
+time([[Config for gen.nvim]], true)
+time([[Config for gen.nvim]], false)
+-- Config for: crates.nvim
+time([[Config for crates.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vcrates\frequire\0", "config", "crates.nvim")
+time([[Config for crates.nvim]], false)
 -- Config for: ChatGPT.nvim
 time([[Config for ChatGPT.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28nukevim.plugins.chatgpt\frequire\0", "config", "ChatGPT.nvim")
 time([[Config for ChatGPT.nvim]], false)
+-- Config for: competitest.nvim
+time([[Config for competitest.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16competitest\frequire\0", "config", "competitest.nvim")
+time([[Config for competitest.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
@@ -436,13 +463,6 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'Typr', function(cmdargs)
-          require('packer.load')({'typr'}, { cmd = 'Typr', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'typr'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Typr ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'TyprStats', function(cmdargs)
           require('packer.load')({'typr'}, { cmd = 'TyprStats', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -450,10 +470,21 @@ pcall(vim.api.nvim_create_user_command, 'TyprStats', function(cmdargs)
           require('packer.load')({'typr'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TyprStats ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'Typr', function(cmdargs)
+          require('packer.load')({'typr'}, { cmd = 'Typr', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'typr'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Typr ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rustaceanvim'}, { ft = "rust" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'noice.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]

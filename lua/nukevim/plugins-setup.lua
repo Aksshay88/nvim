@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 -- auto install packer if not installed
 local ensure_packer = function()
 	local fn = vim.fn
@@ -50,6 +51,10 @@ use {
     "nvim-telescope/telescope.nvim", -- Fuzzy finder integration
   },
 })
+use 'javiorfo/nvim-soil'
+
+-- Optional for puml syntax highlighting:
+use 'javiorfo/nvim-nyctophilia'
     use {
   'xeluxee/competitest.nvim',
   requires = 'MunifTanjim/nui.nvim',
@@ -78,6 +83,21 @@ use({
     vim.g.dadbod_ui = 1  -- Enable the UI for vim-dadbod
     -- Set a default database connection (optional)
     -- vim.g.dadbod_connection = "postgresql://user:pass@localhost/dbname"
+  end
+}
+    use {
+  'mrcjkb/rustaceanvim',
+  version = '^4', -- Optional: lock to major version
+  ft = { 'rust' }, -- Load only for Rust files
+}
+
+-- rust-setup-for-crates
+use {
+  "saecki/crates.nvim",
+  tag = "v0.3.0", -- Specify a version (check for latest releases)
+  requires = { "nvim-lua/plenary.nvim" },
+  config = function()
+    require("crates").setup()
   end
 }
     use({

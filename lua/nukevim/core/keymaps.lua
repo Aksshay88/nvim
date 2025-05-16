@@ -47,3 +47,11 @@ keymap.set("n", "tt", ":NvimTreeToggle<CR>")
 keymap.set("n", "tr", ":NvimTreeRefresh<CR>")
 --TransparentToggle
 keymap.set("n", "bt", ":TransparentToggle<CR>")
+
+--crates for rust 
+
+vim.keymap.set("n", "<leader>cu", function() require("crates").update() end, { desc = "Update Crates" })
+vim.keymap.set("n", "<leader>ci", ":Crates install<CR>", { desc = "Install Crates" })
+vim.keymap.set("n", "<leader>dd", function() require("crates").show_dependencies() end, { desc = "Show Crates dependencies" })
+vim.keymap.set("n", "<leader>fc", function() require("crates").format() end, { desc = "Format Cargo.toml" })
+vim.keymap.set("n", "<leader>cd", function() require("crates").docs() end, { desc = "Open Crates documentation" })
